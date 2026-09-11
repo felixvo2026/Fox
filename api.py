@@ -23,7 +23,6 @@ async def verarbeitung(msg: Nachricht):
 
     main = Main()
     text = main.verarbeitung(text)
-    print(type(text))
 
     return {"nachricht": text}
 
