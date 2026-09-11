@@ -1,7 +1,23 @@
 from calculate import *
 from variables import variablen
-from commands import commands
+#from commands import commands
 from variables import Variable
+from tokenizer import tokenize
+
+#======Comands======
+def schreibe(text):
+    if isinstance(text, (str, bool)):
+        raise ValueError(text)
+    else:
+        text = tokenize(str(text))
+        text = eval_expressions(text)
+        raise ValueError(text)
+
+commands = {
+    "schreibe": schreibe,
+}
+
+
 
 
 def execute(tokens):

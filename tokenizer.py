@@ -1,4 +1,3 @@
-
 def tokenize(code):
     tokens = []
     klammern = []

@@ -26,7 +26,6 @@ class Main:
                     execute(statement)
                 except Exception as e:
                     self.ausgabe.append(str(e))
-                    print(f"Fehler: {str(e)}")
 
         except Exception as e:
             self.ausgabe.append(str(e))
