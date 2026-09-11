@@ -18,6 +18,10 @@ function send() {
         const liste = data.nachricht;
         
         const terminal = document.getElementById("terminal");
-        terminal.value += "\n" + liste.join("\n");
+        if (terminal.value.length == 0) {
+            terminal.value = liste.join("\n");
+        } else {
+            terminal.value += "\n" + liste.join("\n");
+        }
     });
 }
