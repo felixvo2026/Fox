@@ -9,7 +9,7 @@ body {
 
 #code_eingabe {
     width: 95%;
-    height: 90vh;
+    height: 59vh;
     resize: none;
     border: none;
     border-radius: none;
@@ -40,4 +40,26 @@ body {
     border-radius: 5px;
     background-color: rgb(20, 20, 20);
     
+}
+
+#terminal_div {
+    position: relative;
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 5px;
+    background-color: rgb(20, 20, 20);
+    margin-top: 10px;
+}
+
+#terminal {
+    width: 95%;
+    height: 30vh;
+    resize: none;
+    border: none;
+    border-radius: none;
+    outline: none;
+    padding: 11px;
+    font-size: 14px;
+    font-family: consolas, monospace;
+    color: rgb(235, 235, 235);
+    background-color: rgb(20, 20, 20);
 }

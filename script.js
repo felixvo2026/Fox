@@ -14,5 +14,10 @@ function send() {
     .then(data => {
         console.log(data);
         console.log("Verarbeitung erfolgreich abgeschlossen.");
+
+        const liste = data.nachricht;
+        
+        const terminal = document.getElementById("terminal");
+        terminal.value += "\n" + liste.join("\n");
     });
 }
