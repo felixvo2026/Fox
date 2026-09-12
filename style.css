@@ -1,15 +1,24 @@
 body {
     background-color: rgb(40, 40, 40);
     color: rgb(235, 235, 235);
+    margin: 0; /* Verhindert unschöne weiße Ränder am Bildschirmrand */
+    /* display: flex;     <-- ENTFERNT: Stört das Layout des .container */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+}
+
+/* Neuer Container für den Hauptinhalt (Editor + Terminal), der RECHTS von der Sidebar liegt */
+.main-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    justify-content: center;
+    padding: 10px; /* Gibt dem Editor etwas Abstand zum Rand */
+    box-sizing: border-box;
 }
 
 #code_eingabe {
-    width: 95%;
-    height: 59vh;
+    width: 100%; /* Auf 100% geändert, da der Container jetzt das Padding regelt */
+    height: 100%; /* Nutzt die volle Höhe des code_eingabe_div */
     resize: none;
     border: none;
     border-radius: none;
@@ -19,47 +28,104 @@ body {
     font-family: consolas, monospace;
     color: rgb(235, 235, 235);
     background-color: rgb(20, 20, 20);
+    box-sizing: border-box; /* Verhindert, dass Padding das Layout sprengt */
 }
 
 #code_eingabe_button {
     position: absolute;
-    top: 1px;
-    right: 1px;
+    top: 5px; /* Leicht angepasst für bessere Optik */
+    right: 5px;
     background-color: rgb(40, 40, 40);
     color: white;
     border: none;
     border-radius: 3px;
-    padding: 1px 1px;
+    padding: 3px 3px; /* Etwas mehr Klickfläche */
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
+    z-index: 10; /* Stellt sicher, dass der Button über dem Textfeld liegt */
 }
 
 #code_eingabe_div {
+    flex: 2;                 /* Nimmt 2/3 des vertikalen Raums ein */
     position: relative;
     border: 1px solid rgb(80, 80, 80);
-    border-radius: 5px;
+    border-radius: 12px; /* Gleiche Abrundung wie bei der Sidebar */
     background-color: rgb(20, 20, 20);
-    
+    overflow: hidden;    /* WICHTIG: Schneidet die Ecken des Textareas innen sauber ab */
 }
 
 #terminal_div {
+    flex: 1;                 /* Verteilt den Platz gleichmäßig */
     position: relative;
     border: 1px solid rgb(80, 80, 80);
-    border-radius: 5px;
+    border-radius: 12px;
     background-color: rgb(20, 20, 20);
-    margin-top: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+    display: flex;           /* NEU: Macht den Div zu einer Flexbox */
 }
 
 #terminal {
-    width: 95%;
-    height: 30vh;
+    width: 100%;             /* Nutzt die volle Breite */
+    height: 100%;            /* NEU: Zwingt das Textfeld, die komplette Höhe auszufüllen */
+    flex: 1;                 /* NEU: Füllt den restlichen Raum perfekt aus */
     resize: none;
     border: none;
-    border-radius: none;
     outline: none;
-    padding: 11px;
+    padding: 15px;
     font-size: 14px;
     font-family: consolas, monospace;
     color: rgb(235, 235, 235);
     background-color: rgb(20, 20, 20);
+    box-sizing: border-box;  /* Verhindert, dass das Textfeld unten herausragt */
+}
+
+
+.container {
+    display: flex;
+    height: 100vh; /* Volle Bildschirmhöhe */
+    padding: 15px; /* Erzeugt den Abstand zu allen Bildschirmrändern */
+    box-sizing: border-box; /* Sorgt dafür, dass das Padding das Layout nicht verzerrt */
+    gap: 15px; /* Erzeugt automatisch einen perfekten Abstand zwischen Sidebar und Arbeitsbereich */
+}
+
+.sidebar {
+    width: 70px; /* Leicht erhöht, damit die Emojis trotz Rundung gut aussehen */
+    background-color: rgb(30, 30, 30);
+    color: white;
+    padding: 20px 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px; /* Rundet die Ecken der Sidebar schick ab */
+}
+
+/* Diese Selektoren können Sie nutzen, wenn Sie Text in der Sidebar haben */
+.sidebar h2 {
+    font-size: 1rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar li {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem; /* Perfekt für Icons (z.B. FontAwesome) */
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
 }
