@@ -70,6 +70,7 @@ def tokenize(code):
 
             if not klammern or klammern[-1] != klammerpaare[char]:
                 raise ValueError(f"Ungültige schließende Klammer: {char}")
+                return "Fehler"
 
             klammern.pop()
             tokens.append(char)
@@ -109,6 +110,6 @@ def tokenize(code):
 
     if klammern:
         raise ValueError(f"Offene Klammer bleibt übrig: {''.join(klammern)}")
-        
+        return "Fehler"
 
     return tokens

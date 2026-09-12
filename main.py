@@ -1,6 +1,4 @@
 from tokenizer import *
-from execute import execute
-
 
 
 class Main:
@@ -11,9 +9,12 @@ class Main:
         #self.commands = commands
 
     def main(self, text):
+        from execute import execute
         try:
             tokens = tokenize(text)
 
+            if tokens == "Fehler":
+                return
 
             statements, _ = self.split_code(tokens)
 
@@ -29,7 +30,6 @@ class Main:
 
         except Exception as e:
             self.ausgabe.append(str(e))
-            print(f"Fehler: {str(e)}")
             
 
     def split_code(self, tokens, pos=0):
@@ -74,4 +74,6 @@ class Main:
 
     def verarbeitung(self, text):
         self.main(text)
+        from execute import ausgabe
+        self.ausgabe += ausgabe.ausgabe
         return self.ausgabe

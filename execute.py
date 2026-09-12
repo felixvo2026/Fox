@@ -1,17 +1,19 @@
 from calculate import *
 from variables import variablen
-#from commands import commands
 from variables import Variable
 from tokenizer import tokenize
+from ausgabe import Ausgabe
+
+ausgabe = Ausgabe()
 
 #======Comands======
 def schreibe(text):
     if isinstance(text, (str, bool)):
-        raise ValueError(text)
+        ausgabe.add(text)
     else:
         text = tokenize(str(text))
         text = eval_expressions(text)
-        raise ValueError(text)
+        ausgabe.add(text)
 
 commands = {
     "schreibe": schreibe,
@@ -79,7 +81,7 @@ def execute_command( tokens):
                 arg = variablen[arg].value
 
             else:
-                raise ValueError("Fehler: Unbekannte Variable")
+                ausgabe.add("Fehler: Unbekannte Variable")
                 return
 
     # Ausdruck (z.B. 1+2 oder a*5)
@@ -87,7 +89,7 @@ def execute_command( tokens):
         arg = eval_expressions(argument_tokens)
 
         if arg == "Fehler":
-            raise ValueError("Fehler in der Berechnung des Arguments")
+            ausgabe.add("Fehler in der Berechnung des Arguments")
             return
     command(arg)
 
@@ -120,14 +122,14 @@ def create_variable( tokens):
     var_value = eval_expressions(tokens[2:])
 
     if var_value == "Fehler":
-        raise ValueError("Fehler in der Berechnung des Wertes")
+        ausgabe.add("Fehler in der Berechnung des Wertes")
         return
 
     if var_name in variablen:
         try:
             variablen[var_name].value = var_value
         except TypeError as ex:
-            raise ValueError(str(ex))
+            ausgabe.add(str(ex))
             return
     else:
         variablen[var_name] = Variable(var_value)
@@ -155,8 +157,8 @@ def eval_expressions(tokens):
                 break
 
         if start is None or ende is None:
-            raise ValueError("Fehler: Ungültige Klammern")
-            
+            ausgabe.add("Fehler: Ungültige Klammern")
+            return "Fehler"
 
         wert = eval_expressions(expression[start + 1:ende])
 
