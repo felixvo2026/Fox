@@ -73,7 +73,14 @@ class Main:
         return statements, pos
 
     def verarbeitung(self, text):
-        self.main(text)
         from execute import ausgabe
-        self.ausgabe += ausgabe.ausgabe
+        
+        self.ausgabe = []  # ✅ self.ausgabe ZUERST leeren
+        ausgabe.clear()   # ✅ dann ausgabe leeren
+        
+        self.main(text)
+        
+        self.ausgabe += ausgabe.get()  # ✅ Jetzt können beide kombiniert werden
+        ausgabe.clear()   # ✅ Nach der Ausgabe clearen
+        
         return self.ausgabe
