@@ -66,6 +66,10 @@ def compare( tokens):
 
     return tokens
 
+
+
+
+
 def calculate(tokens):
     tokens = calculate_mul_div(tokens)
     tokens = calculate_add_sub(tokens)

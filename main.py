@@ -5,12 +5,13 @@ class Main:
     def __init__(self):
         #self.variables = variablen
         #self.eingabe = None
-        self.ausgabe = []
+        self.ausgabe_main = []
         #self.commands = commands
 
     def main(self, text):
-        from execute import execute
+        from execute import Execute
         try:
+            execute = Execute()
             tokens = tokenize(text)
 
             if tokens == "Fehler":
@@ -24,12 +25,13 @@ class Main:
                 #print(statement)
                 #print(self.commands)
                 try:
-                    execute(statement)
+                    
+                    execute.execute(statement)
                 except Exception as e:
-                    self.ausgabe.append(str(e))
+                    self.ausgabe_main.append(str(e))
 
         except Exception as e:
-            self.ausgabe.append(str(e))
+            self.ausgabe_main.append(str(e))
             
 
     def split_code(self, tokens, pos=0):
@@ -75,12 +77,12 @@ class Main:
     def verarbeitung(self, text):
         from execute import ausgabe
         
-        self.ausgabe = []  # ✅ self.ausgabe ZUERST leeren
+        self.ausgabe_main = []  # ✅ self.ausgabe_main ZUERST leeren
         ausgabe.clear()   # ✅ dann ausgabe leeren
         
         self.main(text)
         
-        self.ausgabe += ausgabe.get()  # ✅ Jetzt können beide kombiniert werden
+        self.ausgabe_main += ausgabe.get()  # ✅ Jetzt können beide kombiniert werden
         ausgabe.clear()   # ✅ Nach der Ausgabe clearen
         
-        return self.ausgabe
+        return self.ausgabe_main
