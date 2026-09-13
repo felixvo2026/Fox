@@ -14,6 +14,24 @@ body {
     flex-direction: column;
     padding: 10px; /* Gibt dem Editor etwas Abstand zum Rand */
     box-sizing: border-box;
+    
+}
+
+#buttons_div {
+    display: flex;
+    justify-content: flex-end; /* Buttons rechtsbündig */
+    gap: 10px; /* Abstand zwischen den Buttons */
+     margin-top: 10px;  /* Abstand zum Editor */
+}
+
+#buttons_div button {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 3px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 #code_eingabe {
@@ -30,6 +48,8 @@ body {
     background-color: rgb(20, 20, 20);
     box-sizing: border-box; /* Verhindert, dass Padding das Layout sprengt */
 }
+
+
 
 #code_eingabe_button {
     position: absolute;
@@ -128,4 +148,8 @@ body {
 
 .sidebar a:hover {
     text-decoration: underline;
+}
+
+[hidden] {
+    display: none !important;
 }

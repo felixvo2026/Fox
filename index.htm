@@ -31,7 +31,13 @@
                 <button id="code_eingabe_button" onclick="send()">✅</button>
                 <textarea name="code_eingabe" id="code_eingabe" placeholder="Dein Code" autofocus></textarea>
             </div>
-            
+
+            <div id="buttons_div">
+                <button onclick="openTerminal()">🔼</button>
+                <button onclick="closeTerminal()">🔽</button>
+                <button onclick="clearTerminal()">🗑️</button>
+            </div>
+
             <!-- Terminal Box (Bleibt standardmäßig über 'hidden' unsichtbar) -->
             <div id="terminal_div" hidden>
                 <textarea name="terminal" id="terminal" readonly></textarea>

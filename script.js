@@ -31,3 +31,24 @@ function send() {
         }
     });
 }
+
+function openTerminal() {
+    const terminal_div = document.getElementById("terminal_div");
+    const terminal = document.getElementById("terminal");
+    terminal_div.hidden = false;
+    terminal.style.height = "30vh";
+    document.getElementById("code_eingabe").style.height = "59vh";
+}
+
+function closeTerminal() {
+    const terminal_div = document.getElementById("terminal_div");
+    const terminal = document.getElementById("terminal");
+    terminal_div.hidden = true;
+    terminal.style.height = "0";
+    document.getElementById("code_eingabe").style.height = "89vh";
+}
+
+function clearTerminal() {
+    const terminal = document.getElementById("terminal");
+    terminal.value = "";
+}
