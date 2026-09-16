@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from python.main import *
+from main import *
 
 app = FastAPI()
 app.add_middleware(
