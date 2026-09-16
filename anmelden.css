@@ -1,0 +1,80 @@
+body {
+    background-color: rgb(40, 40, 40); /* Etwas dunkler für mehr Kontrast */
+    color: rgb(235, 235, 235);
+    margin: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modernere Schriftart */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-content {
+    background-color: #242432; /* Schickes Dunkelblau/Grau */
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(88, 145, 238, 0.2); /* Sanfterer, modernerer Schatten */
+    width: 320px;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Layout für Labels und Inputs */
+label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    color: #b3b3b3;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #1c1c26;
+    border: 1px solid #3a3a4f;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* Ermöglicht weiche Übergänge */
+}
+
+/* Effekt, wenn man in ein Eingabefeld klickt */
+input:focus {
+    outline: none;
+    border-color: #5891ee;
+    box-shadow: 0 0 8px rgba(88, 145, 238, 0.4);
+}
+
+/* Der neue Registrieren-Button */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #5891ee;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 5px;
+}
+
+.btn-submit:hover {
+    background-color: #437ddb;
+}
+
+.btn-submit:active {
+    transform: scale(0.98); /* Kleiner Klick-Effekt */
+}
