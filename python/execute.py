@@ -1,7 +1,7 @@
-from calculate import *
-from variables import *
-from tokenizer import tokenize
-from ausgabe import Ausgabe
+from python.calculate import *
+from python.variables import *
+from python.tokenizer import tokenize
+from python.ausgabe import Ausgabe
 
 ausgabe = Ausgabe()
 

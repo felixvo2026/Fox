@@ -1,4 +1,4 @@
-from tokenizer import *
+from python.tokenizer import *
 
 
 class Main:
@@ -9,7 +9,7 @@ class Main:
         #self.commands = commands
 
     def main(self, text):
-        from execute import Execute
+        from python.execute import Execute
         try:
             execute = Execute()
             tokens = tokenize(text)
@@ -75,7 +75,7 @@ class Main:
         return statements, pos
 
     def verarbeitung(self, text):
-        from execute import ausgabe
+        from python.execute import ausgabe
         
         self.ausgabe_main = []  # ✅ self.ausgabe_main ZUERST leeren
         ausgabe.clear()   # ✅ dann ausgabe leeren
