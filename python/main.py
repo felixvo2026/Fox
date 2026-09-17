@@ -25,7 +25,6 @@ class Main:
                 #print(statement)
                 #print(self.commands)
                 try:
-                    
                     execute.execute(statement)
                 except Exception as e:
                     self.ausgabe_main.append(str(e))

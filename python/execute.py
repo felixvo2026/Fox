@@ -16,8 +16,16 @@ class Execute:
 
 
     def execute(self, tokens, inside_block=False):
+        if len(tokens) == 0:
+            return
+
+        # Wenn ein neues Statement kommt, das kein 'sonst' ist, 
+        # und wir nicht im selben Block sind, wird die Else-Erwartung gelöscht.
+        if not self.is_else(tokens) and not inside_block:
+            self.waiting_for_else = False
+
         if self.is_variable(tokens):
-                self.create_variable(tokens)
+            self.create_variable(tokens)
 
         elif self.is_command(tokens):
             self.execute_command(tokens)
@@ -32,14 +40,16 @@ class Execute:
             pass
 
 
+
     def is_if(self, tokens):
         return len(tokens) > 0 and tokens[0] == "wenn"
 
     def execute_if(self, tokens):
 
-        
         condition = tokens[1:-1]
+        print(f"condition: {condition}")
         block = tokens[-1]
+        print(f"block: {block}")
         self.last_if_result = self.eval_expressions(condition)
 
         self.waiting_for_else = True
@@ -91,21 +101,20 @@ class Execute:
 
         # Nur ein einzelnes Argument?
         if len(argument_tokens) == 1:
-            arg = self.parse_value(argument_tokens[0])
-
-            # Variable?
-            if isinstance(arg, str):
-                # String-Literal
-                if argument_tokens[0].startswith('"') and argument_tokens[0].endswith('"'):
-                    pass
-
-                # Variable vorhanden
-                elif arg in variablen:
-                    arg = variablen[arg].value
-
-                else:
+            token = argument_tokens[0]
+            # Ist es ein String-Literal?
+            if token.startswith('"') and token.endswith('"'):
+                arg = self.parse_value(token)
+            # Ist es eine bekannte Variable?
+            elif token in variablen:
+                arg = variablen[token].value
+            # Es ist eine Zahl oder ein Fehler
+            else:
+                arg = self.parse_value(token)
+                if isinstance(arg, str): # Wenn es ein String bleibt, ist es eine unbekannte Var
                     ausgabe.add("Fehler: Unbekannte Variable")
                     return
+
 
         # Ausdruck (z.B. 1+2 oder a*5)
         else:
