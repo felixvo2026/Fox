@@ -23,7 +23,7 @@ h2 {
     margin-top: 0;
     margin-bottom: 25px;
     text-align: center;
-    color: #ffffff;
+    color: rgb(255, 255, 255);
     letter-spacing: 0.5px;
 }
 
@@ -77,4 +77,13 @@ input:focus {
 
 .btn-submit:active {
     transform: scale(0.98); /* Kleiner Klick-Effekt */
+}
+
+p {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.5px;
 }

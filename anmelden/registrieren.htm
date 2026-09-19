@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="anmelden.css">
 </head>
 <body>
+    <script src="../script.js"></script>
     <div class="main-content">
         <h2>Registrieren</h2>
         <form>
@@ -16,9 +17,12 @@
             <label for="Password">Passwort</label>
             <input type="password" id="Password" placeholder="••••••••" required>
             
-            <button type="submit" class="btn-submit">Konto erstellen</button>
+            <button type="submit" class="btn-submit" onclick="KontoErstellen(event)">Konto erstellen</button>
+            <p hidden id="info-register"></p>
             <a href="anmelden.htm">Du hast schon ein Konto? Anmelden</a>
         </form>
     </div>
+
+    
 </body>
 </html>
